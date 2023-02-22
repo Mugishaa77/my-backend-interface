@@ -10,6 +10,7 @@ app.get("/", (req, res) => {
     res.send("welcome to Evergreen");
 });
 
+console.log("hello");
 app.get("/products", (req, res) => {
     res.send([2,3,4]);
 });
