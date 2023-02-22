@@ -7,8 +7,12 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("welcome to Evergreen")
-})
+    res.send("welcome to Evergreen");
+});
+
+app.get("/products", (req, res) => {
+    res.send([2,3,4]);
+});
 
 const port = process.env.PORT || 5000
 
