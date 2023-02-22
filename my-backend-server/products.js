@@ -8,18 +8,18 @@ const products = [
   { 
     id: 2,
     name: 'Garlic',
-    image: garlic,
+    image: "",
     price: 10,
   },
   {
     id:3,
     name: 'Red Onions',
-    image: redOnions,
+    image: "",
     price: 10,
   },
   {
     name: 'Sagaa',
-    image: sagaa,
+    image: "",
     price: 'Ksh 10.00',
   },
 ];
