@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require ('cors');
 
+const products = require("./products");
+
 const app = express();
 
 app.use(express.json());
@@ -10,9 +12,8 @@ app.get("/", (req, res) => {
     res.send("welcome to Evergreen");
 });
 
-console.log("hello");
 app.get("/products", (req, res) => {
-    res.send([2,3,4]);
+    res.send(products);
 });
 
 const port = process.env.PORT || 5000
