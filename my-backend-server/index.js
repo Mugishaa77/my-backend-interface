@@ -48,6 +48,8 @@ app.get('/products', (req, res) => {
   res.send(products);
 });
 
+
+
 app.post('/sign-up', async (req, res) => {
   const { firstName, lastName, idNumber, city, telephone, county, email, password } = req.body;
 
