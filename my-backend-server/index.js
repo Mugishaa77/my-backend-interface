@@ -19,9 +19,15 @@ app.get('/products', (req, res) => {
 });
 
 const port = process.env.PORT || 5000;
+const uri = process.env.DB_URI
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-mongoose.connect()
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("MongoDB connection successful..."))
+.catch((err) => console.log("MongoDB connection failed...", err.message))
+
