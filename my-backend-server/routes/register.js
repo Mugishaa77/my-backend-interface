@@ -8,9 +8,14 @@ const router = express.Router();
 router.post("/", async(req, res) => {
     
     const schema = Joi.object({
-        name: Joi.string().min(3).max(30).required(),
-         email: Joi.string().min(3).max(200).required().email(),
-          password: Joi.string().min(3).max(200).required()
+        firstName: Joi.string().min(3).max(30).required(),
+        lastName: Joi.string().min(3).max(30).required(),
+        idNumber: Joi.string().min(3).max(30).required(),
+        city: Joi.string().min(3).max(30).required(),
+        telephone: Joi.string().min(10).max(14).required(),
+        county: Joi.string().min(3).max(30).required(),
+        email: Joi.string().min(3).max(200).required().email(),
+        password: Joi.string().min(3).max(200).required()
 
     });
     
@@ -21,9 +26,15 @@ router.post("/", async(req, res) => {
     if(user) return res.status(400).send("User already exists");
 
     user = new User ({
-        name : req.body.name,
+        firstName : req.body.firstName,
         email: req.body.email,
         password: req.body.password,
+        lastName: req.body.lastName,
+        idNumber: req.body.idNumber,
+        city: req.body.city,
+        telephone: req.body.telephone,
+        county: req.body.county,
+    
     });
 
     const salt = await bcrypt.genSalt(10);
