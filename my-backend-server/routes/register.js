@@ -27,13 +27,15 @@ router.post("/", async(req, res) => {
 
     user = new User ({
         firstName : req.body.firstName,
-        email: req.body.email,
-        password: req.body.password,
         lastName: req.body.lastName,
         idNumber: req.body.idNumber,
-        city: req.body.city,
         telephone: req.body.telephone,
         county: req.body.county,
+        city: req.body.city,
+        email: req.body.email,
+        password: req.body.password,
+        
+        
     
     });
 
