@@ -22,7 +22,7 @@ router.post("/", async(req, res) => {
     const {error} = schema.validate(req.body);
     if(error) return res.status(400).send(error.details[0].message);
 
-    let user = User.findOne({email: req.body.email});
+    let user = user.findOne({email: req.body.email});
     if(user) return res.status(400).send("User already exists");
 
     user = new User ({
