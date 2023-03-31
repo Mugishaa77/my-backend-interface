@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const register = require('./routes/register');
 const login = require('./routes/login');
+const productsRoute = require('./routes/products');
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/register", register);
 app.use("/api/login", login);
+app.use("api/products", productsRoute);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Evergreen');
