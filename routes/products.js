@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/", async(req, res) => {
 
-    const {name, price, image} = req.body;
+    const {name, price, category, image} = req.body;
 
     try {
         if(image){
@@ -21,12 +21,13 @@ router.post("/", async(req, res) => {
             constProduct = new Product({
                 name, 
                 price,
+                category,
                 image: uploadRes
             });
 
             const savedProduct = await product.save ()
 
-            req.statusCode(200).send(savedProduct);
+            res.status(200).send(savedProduct);
            } 
 
         }
