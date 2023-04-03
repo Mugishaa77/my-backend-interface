@@ -27,6 +27,8 @@ app.get('/products', (req, res) => {
 
 const port = process.env.PORT || 5000;
 const uri = process.env.DB_URI
+const backendApiUrl = process.env.BACKEND_API_URL;
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
@@ -39,3 +41,7 @@ mongoose
 }).then(() => console.log("MongoDB connection successful..."))
 .catch((err) => console.log("MongoDB connection failed...", err.message))
 
+fetch(`${backendApiUrl}/api/my-endpoint`)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
