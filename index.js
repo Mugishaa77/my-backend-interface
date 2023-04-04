@@ -12,10 +12,7 @@ const products = require('./products');
 require("dotenv").config()
 
 app.use(express.json());
-app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE"]
-}));
+app.use(cors());
 app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("api/products", productsRoute);
