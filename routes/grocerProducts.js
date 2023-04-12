@@ -1,10 +1,10 @@
 const express = require("express");
-const { Product } = require("../models/product");
+const { GrocerProduct } = require("../models/grocerProduct");
 const cloudinary = require("../utils/cloudinary");
 
 const router = express.Router();
 
-// create
+// create a grocer product
 router.post("/", async (req, res) => {
   const { name, price, category, info, measurement, image } = req.body;
 
@@ -14,8 +14,8 @@ router.post("/", async (req, res) => {
         upload_preset: "farmersMarket",
       });
 
-      // create a new Product instance with the uploaded image URL
-      const product = new Product({
+      // create a new GrocerProduct instance with the uploaded image URL
+      const grocerProduct = new GrocerProduct({
         name,
         price,
         category,
@@ -24,10 +24,10 @@ router.post("/", async (req, res) => {
         image: uploadRes.url,
       });
 
-      // save the new product to the database
-      const savedProduct = await product.save();
+      // save the new grocer product to the database
+      const savedGrocerProduct = await grocerProduct.save();
 
-      res.status(200).send(savedProduct);
+      res.status(200).send(savedGrocerProduct);
     } else {
       res.status(400).send("No image provided");
     }
@@ -37,11 +37,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-// read
+// get all grocer products
 router.get("/", async (req, res) => {
   try {
-    const products = await Product.find();
-    res.status(200).send(products);
+    const grocerProducts = await GrocerProduct.find();
+    res.status(200).send(grocerProducts);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
@@ -49,3 +49,4 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
+
