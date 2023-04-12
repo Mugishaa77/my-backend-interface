@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/", async(req, res) => {
 
-    const {name, price, category, image} = req.body;
+    const {name, price, category, info, measurement, image} = req.body;
 
     try {
         if(image){
@@ -22,6 +22,8 @@ router.post("/", async(req, res) => {
                 name, 
                 price,
                 category,
+                measurement,
+                info,
                 image: uploadRes
             });
 
