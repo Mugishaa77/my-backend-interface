@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const Joi = require('joi');
 const express = require('express');
 const genAuthToken = require('../utils/genAuthToken');
@@ -20,7 +20,7 @@ router.post("/", async(req, res) => {
     let user = User.findOne({email: req.body.email});
     if(!user) return res.status(400).send("User not found");
 
-    const isValid = await bcrypt.compare(req.body.password, user.password);
+    const isValid = await bcryptjs.compare(req.body.password, user.password);
     if(!isValid) return res.status(400).send("User not found");
 
     const token = genAuthToken(user);

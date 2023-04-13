@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const Joi = require('joi');
 const express = require('express');
 const genAuthToken = require('../utils/genAuthToken');
@@ -39,9 +39,9 @@ router.post("/", async(req, res) => {
     
     });
 
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcryptjs.genSalt(10);
 
-    user.password = await bcrypt.hash(user.password, salt)
+    user.password = await bcryptjs.hash(user.password, salt)
 
 
     user = await user.save()
