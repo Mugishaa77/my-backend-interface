@@ -49,7 +49,7 @@ app.listen(port, () => {
 });
 
 const fetch = require('node-fetch');
-fetch(`${backendApiUrl}/api`)
+fetch(`${backendApiUrl}/products`)
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error(error));
