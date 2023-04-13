@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+
 // routes
 const register = require('./routes/register');
 const login = require('./routes/login');
@@ -47,7 +48,9 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
+
+// use fetch here
 fetch(`${backendApiUrl}/products`)
   .then(response => response.json())
   .then(data => console.log(data))
