@@ -43,12 +43,6 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-mongoose
-.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("MongoDB connection successful..."))
-.catch((err) => console.log("MongoDB connection failed...", err.message))
 
 fetch(`${backendApiUrl}/api/my-endpoint`)
   .then(response => response.json())
