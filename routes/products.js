@@ -14,7 +14,7 @@ mongoose.connect(uri, {
 .catch((err) => console.log("Sally's new connection failed...", err.message))
 
 //  Get a reference to your products collection
-const Product = require("../models/product");
+const { Product } = require("../models/product");
 const productsCollection = Product.collection;
 
 // create
