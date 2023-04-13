@@ -48,7 +48,7 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-const fetch = await import('node-fetch');
+const fetch = require('node-fetch');
 
 fetch(`${backendApiUrl}/products`)
   .then(response => response.json())
