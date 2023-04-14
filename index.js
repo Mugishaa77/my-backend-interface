@@ -17,9 +17,6 @@ const grocerProfileRoutes = require('./routes/grocerProfile');
 // root component
 const products = require('./products');
 
-// models
-const { GrocerProduct } = require('./models/grocerProduct');
-require("dotenv").config()
 
 // controllers
 const profileController = require('./controllers/profileController');
