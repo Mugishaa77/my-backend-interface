@@ -1,5 +1,7 @@
-const FarmerProfile = require('../models/FarmerProfile');
-const GrocerProfile = require('../models/GrocerProfile');
+const { FarmerProfile }   = require('../models/FarmerProfile');
+const  { GrocerProfile } = require('../models/GrocerProfile');
+
+
 
 // function to save farmer profile
 exports.saveFarmerProfile = async (req, res) => {
