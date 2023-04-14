@@ -18,6 +18,9 @@ const products = require('./products');
 const { GrocerProduct } = require('./models/grocerProduct');
 require("dotenv").config()
 
+// controllers
+const profileController = require('./controllers/profileController');
+
 // api end-points
 app.use(express.json());
 app.use(cors());
@@ -25,6 +28,11 @@ app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
 app.use("/api/grocerProducts", grocerProductsRoute);
+
+// routes for saving profiles
+app.post('/farmer/profile', profileController.saveFarmerProfile);
+app.post('/grocer/profile', profileController.saveGrocerProfile);
+
 
 
 app.get('/', (req, res) => {
