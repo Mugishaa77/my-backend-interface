@@ -1,8 +1,8 @@
-// extensions
+// extensions and dependancies (just not from the project)
 const express = require('express');
 const cors = require('cors');
 const app = express();
-
+const fetch = require('node-fetch');
 
 // routes
 const register = require('./routes/register');
@@ -12,11 +12,8 @@ const grocerProductsRoute = require('./routes/grocerProducts');
 const farmerProfileRoutes = require('./routes/farmerProfile');
 const grocerProfileRoutes = require('./routes/grocerProfile');
 
-
-
 // root component
 const products = require('./products');
-
 
 // controllers
 const profileController = require('./controllers/profileController');
@@ -45,8 +42,8 @@ app.get('/products', (req, res) => {
   res.send(products);
 });
 
-app.get('./grocerProducts', (req, res) => {
-  res.send(grocerProductsRoute);
+app.get('/farmerProfile', (req, res) => {
+  res.send('made it lil nigga');
 })
 
 // .env file
@@ -58,8 +55,12 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-const fetch = require('node-fetch');
+
+
 fetch(`${backendApiUrl}/products`)
   .then(response => response.json())
   .then(data => console.log(data))
-  .catch(error => console.error(error));
+  .catch(error => {
+    console.error(error);
+    console.log(error.response);
+  });
