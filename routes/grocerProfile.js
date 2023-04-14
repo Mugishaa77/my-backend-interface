@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const GrocerProfile = require('../models/GrocerProfile');
+const GrocerProfile = require('../models/grocerProfile');
 
 router.post('/grocer-profile', async (req, res) => {
   const { fullName, emailAddress, contactNumber, stallName, stallNumber } = req.body;

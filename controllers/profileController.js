@@ -1,5 +1,5 @@
-const FarmerProfile  = require('../models/FarmerProfile');
-const GrocerProfile  = require('../models/GrocerProfile');
+const FarmerProfile  = require('../models/farmerProfile');
+const GrocerProfile  = require('../models/grocerProfile');
 
 
 
