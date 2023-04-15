@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const GrocerProfile = require('../models/grocerProfile');
 
-router.post('/grocer-profile', async (req, res) => {
+router.post('/api/grocerProfile', async (req, res) => {
   const { fullName, emailAddress, contactNumber, stallName, stallNumber } = req.body;
 
   try {

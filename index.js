@@ -42,9 +42,6 @@ app.get('/products', (req, res) => {
   res.send(products);
 });
 
-app.get('/farmerProfile', (req, res) => {
-  res.send('made it lil nigga');
-})
 
 // .env file
 const port = process.env.PORT || 5000;
