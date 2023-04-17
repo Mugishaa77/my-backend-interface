@@ -9,8 +9,8 @@ const register = require('./routes/register');
 const login = require('./routes/login');
 const productsRoute = require('./routes/products');
 const grocerProductsRoute = require('./routes/grocerProducts');
-const farmerProfileRoutes = require('./routes/farmerProfile');
-const grocerProfileRoutes = require('./routes/grocerProfile');
+const farmerProfileRoute = require('./routes/farmerProfile');
+const grocerProfileRoute = require('./routes/grocerProfile');
 
 // root component
 const products = require('./products');
@@ -25,8 +25,8 @@ app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
 app.use("/api/grocerProducts", grocerProductsRoute);
-app.use("/api/farmerProfile", farmerProfileRoutes);
-app.use("/api/grocerProfile", grocerProfileRoutes);
+app.use("/api/farmer", farmerProfileRoute);
+app.use("/api/grocer", grocerProfileRoute);
 
 // routes for saving profiles
 app.post('/farmer/profile', profileController.saveFarmerProfile);

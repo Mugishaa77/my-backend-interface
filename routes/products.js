@@ -6,6 +6,7 @@ const router = express.Router();
 const uri = process.env.DB_URI
 
 // connecting to mongoDB
+// 
 
 mongoose.connect(uri, {
   useNewUrlParser: true,

@@ -1,8 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const GrocerProfile = require('../models/grocerProfile');
+const mongoose = require('mongoose');
+const uri = process.env.DB_URI
 
-router.post('/api/grocerProfile', async (req, res) => {
+// connecting to mongoDB
+// 
+
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log("Sally's new connection successful..."))
+.catch((err) => console.log("Sally's new connection failed...", err.message))
+// 
+
+router.post('/api/grocer/profile', async (req, res) => {
   const { fullName, emailAddress, contactNumber, stallName, stallNumber } = req.body;
 
   try {
