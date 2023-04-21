@@ -32,6 +32,14 @@ app.use("/api/grocer", grocerProfileRoute);
 app.post('/farmer/profile', profileController.saveFarmerProfile);
 app.post('/grocer/profile', profileController.saveGrocerProfile);
 
+// route for sending an stk push to safaricom
+app.post("/stk", (req, res) => {
+  const phone = req.body.phone;
+  const amount = req.body.amount;
+
+  res.json({phone, amount})
+});
+
 
 
 app.get('/', (req, res) => {
