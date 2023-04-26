@@ -26,6 +26,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // api end-points(used /api prefixing for code best practices)
+
 app.use('/users', users);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
