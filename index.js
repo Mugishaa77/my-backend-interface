@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const fetch = require('node-fetch');
+const bodyParser = require('body-parser');
+
 
 // routes
 const register = require('./routes/register');
@@ -18,9 +20,12 @@ const products = require('./products');
 // controllers
 const profileController = require('./controllers/profileController');
 
-// api end-points(used /api prefixing for code best practices)
+// 
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
+
+// api end-points(used /api prefixing for code best practices)
 app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
