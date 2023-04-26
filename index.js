@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 
 
 // routes
-const register = require('./routes/register');
 const login = require('./routes/login');
 const productsRoute = require('./routes/products');
 const grocerProductsRoute = require('./routes/grocerProducts');
@@ -26,7 +25,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // api end-points(used /api prefixing for code best practices)
-app.use("/api/register", register);
+
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
 app.use("/api/grocerProducts", grocerProductsRoute);
