@@ -18,7 +18,7 @@ const products = require('./products');
 // controllers
 const profileController = require('./controllers/profileController');
 
-// api end-points
+// api end-points(used /api prefixing for code best practices)
 app.use(express.json());
 app.use(cors());
 app.use("/api/register", register);
@@ -34,6 +34,7 @@ app.post('/grocer/profile', profileController.saveGrocerProfile);
 
 // route for sending an stk push to safaricom
 app.post("/stk", (req, res) => {
+  console.log("Received STK request:", req.body); // Add this line
   const phone = req.body.phone;
   const amount = req.body.amount;
 
