@@ -23,9 +23,7 @@ const profileController = require('./controllers/profileController');
 // 
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cors({
-  origin: 'https://evergreen-farms-limited-839zglvns-mugishaa77.vercel.app'
-}));
+app.use(cors());
 
 // api end-points(used /api prefixing for code best practices)
 
