@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcryptjs');
 
 
 // routes
@@ -12,7 +13,7 @@ const users = require('./routes/users');
 const productsRoute = require('./routes/products');
 
 // unapproved
-const logins = require('./routes/logins');
+const login = require('./routes/logins');
 const grocerProductsRoute = require('./routes/grocerProducts');
 const farmerProfileRoute = require('./routes/farmerProfile');
 const grocerProfileRoute = require('./routes/grocerProfile');
@@ -33,9 +34,10 @@ app.use(cors());
 app.use('/users', users);
 // remeber to make it store all input...
 app.use("/api/products", productsRoute);
-app.use("/logins", logins);
+
 
 // unapproved
+app.use("/login", login);
 app.use("/api/grocerProducts", grocerProductsRoute);
 app.use("/api/farmer", farmerProfileRoute);
 app.use("/api/grocer", grocerProfileRoute);
@@ -55,7 +57,6 @@ app.post("/stk", (req, res) => {
 });
 // end of untested
 
-
 app.get('/', (req, res) => {
   res.send('Welcome to Evergreen');
 });
@@ -63,6 +64,7 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
   res.send(products);
 });
+
 
 
 

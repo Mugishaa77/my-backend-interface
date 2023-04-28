@@ -1,24 +1,32 @@
-const express = require('express');
+const bcrypt = require("bcryptjs");
+const { User } = require("../models/user");
+const Joi = require("joi");
+const express = require("express");
+const genAuthToken = require("../utils/genAuthToken");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const Login = require('../models/login');
 
-router.post('/login', async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await Login.findOne({ email });
-    if (!user) {
-      return res.status(401).send('Invalid login credentials');
-    }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).send('Invalid login credentials');
-    }
-    res.send('User authenticated successfully');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
+router.post("/", async (req, res) => {
+  console.log('verify login route')
+  const schema = Joi.object({
+    email: Joi.string().min(3).max(200).required().email(),
+    password: Joi.string().min(6).max(200).required(),
+  });
+  
+
+  const { error } = schema.validate(req.body);
+
+  if (error) return res.status(400).send(error.details[0].message);
+
+  let user = await User.findOne({ email: req.body.email });
+  if (!user) return res.status(400).send("Invalid email or password...");
+
+  const validPassword = await bcrypt.compare(req.body.password, user.password);
+  if (!validPassword)
+    return res.status(400).send("Invalid email or password...");
+
+  const token = genAuthToken(user);
+
+  res.send(token);
 });
 
 module.exports = router;

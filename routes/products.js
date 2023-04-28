@@ -20,6 +20,7 @@ const productsCollection = Product.collection;
 
 // create
 router.post("/", async (req, res) => {
+  console.log('products route is being called')
   const { name, price, category, info, measurement, image } = req.body;
 
   try {
