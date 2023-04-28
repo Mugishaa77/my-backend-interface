@@ -7,9 +7,12 @@ const bodyParser = require('body-parser');
 
 
 // routes
+// approved
 const users = require('./routes/users');
-const login = require('./routes/login');
 const productsRoute = require('./routes/products');
+
+// unapproved
+const logins = require('./routes/logins');
 const grocerProductsRoute = require('./routes/grocerProducts');
 const farmerProfileRoute = require('./routes/farmerProfile');
 const grocerProfileRoute = require('./routes/grocerProfile');
@@ -26,10 +29,13 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // api end-points(used /api prefixing for code best practices)
-
+// approved
 app.use('/users', users);
-app.use("/api/login", login);
+// remeber to make it store all input...
 app.use("/api/products", productsRoute);
+app.use("/logins", logins);
+
+// unapproved
 app.use("/api/grocerProducts", grocerProductsRoute);
 app.use("/api/farmer", farmerProfileRoute);
 app.use("/api/grocer", grocerProfileRoute);
@@ -39,6 +45,7 @@ app.post('/farmer/profile', profileController.saveFarmerProfile);
 app.post('/grocer/profile', profileController.saveGrocerProfile);
 
 // route for sending an stk push to safaricom
+// untested
 app.post("/stk", (req, res) => {
   console.log("Received STK request:", req.body); // Add this line
   const phone = req.body.phone;
@@ -46,7 +53,7 @@ app.post("/stk", (req, res) => {
 
   res.json({phone, amount})
 });
-
+// end of untested
 
 
 app.get('/', (req, res) => {
@@ -56,6 +63,7 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
   res.send(products);
 });
+
 
 
 // .env file
@@ -68,7 +76,7 @@ app.listen(port, () => {
 });
 
 
-
+// front end is fresh market/basket one(is the main display and is entirely for testing)
 fetch(`${backendApiUrl}/products`)
   .then(response => response.json())
   .then(data => console.log(data))
