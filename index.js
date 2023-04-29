@@ -4,7 +4,8 @@ const cors = require('cors');
 const app = express();
 const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcryptjs');
+require('dotenv').config();
+
 
 
 // routes
@@ -13,7 +14,7 @@ const users = require('./routes/users');
 const productsRoute = require('./routes/products');
 
 // unapproved
-const login = require('./routes/logins');
+const members = require('./routes/members');
 const grocerProductsRoute = require('./routes/grocerProducts');
 const farmerProfileRoute = require('./routes/farmerProfile');
 const grocerProfileRoute = require('./routes/grocerProfile');
@@ -34,10 +35,10 @@ app.use(cors());
 app.use('/users', users);
 // remeber to make it store all input...
 app.use("/api/products", productsRoute);
-
+app.use('/members', members);
 
 // unapproved
-app.use("/login", login);
+
 app.use("/api/grocerProducts", grocerProductsRoute);
 app.use("/api/farmer", farmerProfileRoute);
 app.use("/api/grocer", grocerProfileRoute);
