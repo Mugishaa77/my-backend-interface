@@ -15,10 +15,13 @@ const productsRoute = require('./routes/products');
 
 // unapproved
 const members = require('./routes/members');
+const farmerProfiles = require('./routes/farmerProfiles');
+const grocerProfiles = require('./routes/grocerProfiles');
 
 
 // root component
 const products = require('./products');
+
 
 
 // 
@@ -31,7 +34,11 @@ app.use(cors());
 app.use('/users', users);
 // remember to make it store all input...
 app.use("/api/products", productsRoute);
+
+// unapproved
 app.use('/members', members);
+app.use('/api/farmers', farmerProfiles);
+app.use('/api/grocers', grocerProfiles);
 
 
 

@@ -10,4 +10,4 @@ const grocerProfileSchema = new mongoose.Schema({
 
 const GrocerProfile = mongoose.model('GrocerProfile', grocerProfileSchema);
 
-module.exports = FarmerProfile;
+module.exports = GrocerProfile;
