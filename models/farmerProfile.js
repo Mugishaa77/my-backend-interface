@@ -5,7 +5,7 @@ const farmerProfileSchema = new mongoose.Schema({
   emailAddress: { type: String, required: true },
   contactNumber: { type: String, required: true },
   stallName: { type: String, required: true },
-  farmerStallNumber: { type: String, required: true },
+  stallNumber: { type: String, required: true },
 });
 
 const FarmerProfile = mongoose.model('FarmerProfile', farmerProfileSchema);

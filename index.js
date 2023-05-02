@@ -15,15 +15,11 @@ const productsRoute = require('./routes/products');
 
 // unapproved
 const members = require('./routes/members');
-const grocerProductsRoute = require('./routes/grocerProducts');
-const farmerProfileRoute = require('./routes/farmerProfile');
-const grocerProfileRoute = require('./routes/grocerProfile');
+
 
 // root component
 const products = require('./products');
 
-// controllers
-const profileController = require('./controllers/profileController');
 
 // 
 app.use(express.json());
@@ -33,19 +29,11 @@ app.use(cors());
 // api end-points(used /api prefixing for code best practices)
 // approved
 app.use('/users', users);
-// remeber to make it store all input...
+// remember to make it store all input...
 app.use("/api/products", productsRoute);
 app.use('/members', members);
 
-// unapproved
 
-app.use("/api/grocerProducts", grocerProductsRoute);
-app.use("/api/farmer", farmerProfileRoute);
-app.use("/api/grocer", grocerProfileRoute);
-
-// routes for saving profiles
-app.post('/farmer/profile', profileController.saveFarmerProfile);
-app.post('/grocer/profile', profileController.saveGrocerProfile);
 
 // route for sending an stk push to safaricom
 // untested

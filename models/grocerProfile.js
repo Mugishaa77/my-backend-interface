@@ -5,9 +5,9 @@ const grocerProfileSchema = new mongoose.Schema({
   emailAddress: { type: String, required: true },
   contactNumber: { type: String, required: true },
   stallName: { type: String, required: true },
-  grocerStallNumber: { type: String, required: true },
+  stallNumber: { type: String, required: true },
 });
 
 const GrocerProfile = mongoose.model('GrocerProfile', grocerProfileSchema);
 
-module.exports = GrocerProfile;
+module.exports = FarmerProfile;
