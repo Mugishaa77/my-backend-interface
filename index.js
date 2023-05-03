@@ -1,10 +1,18 @@
 // extensions and dependancies (just not from the project)
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+
+// connecting to the database
+const { connectToDatabase, mongoose } = require('./db');
+
+// Call connectToDatabase function
+connectToDatabase();
+
 
 
 
@@ -37,8 +45,8 @@ app.use("/api/products", productsRoute);
 
 // unapproved
 app.use('/members', members);
-app.use('/api/farmers', farmerProfiles);
-app.use('/api/grocers', grocerProfiles);
+app.use('/farmers', farmerProfiles);
+app.use('/grocers', grocerProfiles);
 
 
 

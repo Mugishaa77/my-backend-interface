@@ -1,22 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cloudinary = require("../utils/cloudinary");
-
 const router = express.Router();
-const uri = process.env.DB_URI
-
-// connecting to mongoDB
-// 
-
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log("Sally's new connection successful..."))
-.catch((err) => console.log("Sally's new connection failed...", err.message))
-
-//  Get a reference to your products collection
 const { Product } = require("../models/product");
-const productsCollection = Product.collection;
+const { mongoose } = require("../db");
+// 
 
 // create
 router.post("/", async (req, res) => {
@@ -27,16 +14,6 @@ router.post("/", async (req, res) => {
     if (image) {
       const uploadRes = await cloudinary.uploader.upload(image, {
         upload_preset: "farmersMarket",
-      });
-
-      // insert a new product document into your products collection
-      const result = await productsCollection.insertOne({
-        name,
-        price,
-        category,
-        info,
-        measurement,
-        image: uploadRes.url,
       });
 
       // create a new Product instance with the uploaded image URL
@@ -50,7 +27,7 @@ router.post("/", async (req, res) => {
       });
 
       // save the new product to the database
-       const savedProduct = result.ops[0];
+      const savedProduct = await product.save();
 
       res.status(200).send(savedProduct);
     } else {
