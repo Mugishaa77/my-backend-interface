@@ -3,7 +3,7 @@ const router = express.Router();
 const connectToDatabase = require('../db');
 const FarmerProfile = require('../models/farmerProfile');
 
-router.post('/farmer', async (req, res) => {
+router.post('/', async (req, res) => { // change '/farmer' to '/'
   try {
     const db = await connectToDatabase();
     const farmerProfile = new FarmerProfile({

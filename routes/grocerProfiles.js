@@ -1,14 +1,9 @@
 const express = require('express');
-// creates a router instance
 const router = express.Router();
-
-// connects to database
 const connectToDatabase = require('../db');
-
-// imports the schema
 const GrocerProfile = require('../models/grocerProfile');
 
-router.post('/grocer', async (req, res) => {
+router.post('/', async (req, res) => { // change '/grocer' to '/'
   try {
     const db = await connectToDatabase();
     const grocerProfile = new GrocerProfile({
